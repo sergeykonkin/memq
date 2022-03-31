@@ -4,12 +4,20 @@ import (
 	"sync"
 )
 
+// Broker handles topics, subscriptions and message delivery.
 type Broker interface {
+	// Publish publishes a message to a topic.
+	// The message is delivered to all subscribers of the topic.
 	Publish(topic string, msg interface{})
+	// Subscribe subscribes to a topic.
+	// The handler is called for each message published to the topic.
+	// The returned Subscription can be used to unsubscribe from the topic.
 	Subscribe(topic string, handler func(interface{})) Subscription
 }
 
+// Subscription handles unsubscribing from a topic.
 type Subscription interface {
+	// Unsubscribe unsubscribes from a topic.
 	Unsubscribe()
 }
 
@@ -27,6 +35,8 @@ type subscription struct {
 	done  chan struct{}
 }
 
+// NewBroker creates a new Broker.
+// The returned Broker is safe for concurrent use by multiple goroutines.
 func NewBroker() Broker {
 	return &broker{
 		subscribers: make(map[string]map[int]subscription),
