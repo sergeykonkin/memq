@@ -2,6 +2,7 @@
 
 [![build](https://github.com/sergeykonkin/memq/actions/workflows/build.yml/badge.svg)](https://github.com/sergeykonkin/memq/actions/workflows/build.yml)
 [![Go Reference](https://pkg.go.dev/badge/github.com/sergeykonkin/memq.svg)](https://pkg.go.dev/github.com/sergeykonkin/memq)
+[![Go Report Card](https://goreportcard.com/badge/github.com/sergeykonkin/memq)](https://goreportcard.com/report/github.com/sergeykonkin/memq)
 
 A simple thread-safe in-memory message broker fo Go.
 
